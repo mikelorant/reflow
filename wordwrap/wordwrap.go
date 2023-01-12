@@ -64,12 +64,10 @@ func (w *WordWrap) addSpace() {
 }
 
 func (w *WordWrap) addWord() {
-	if w.word.Len() > 0 {
-		w.addSpace()
-		w.lineLen += w.word.PrintableRuneWidth()
-		_, _ = w.buf.Write(w.word.Bytes())
-		w.word.Reset()
-	}
+	w.addSpace()
+	w.lineLen += w.word.PrintableRuneWidth()
+	_, _ = w.buf.Write(w.word.Bytes())
+	w.word.Reset()
 }
 
 func (w *WordWrap) addNewLine() {
